@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qgq.jaymusic.mapper.SongMapper">
+
+    <resultMap id="BaseResultMap" type="com.qgq.jaymusic.entity.Song">
+        <result column="songid" jdbcType="VARCHAR" property="songid" />
+        <result column="songname"   jdbcType="VARCHAR" property="songname" />
+        <result column="singer" jdbcType="VARCHAR" property="singer" />
+        <result column="coverurl" jdbcType="VARCHAR" property="coverurl" />
+        <result column="playurl" jdbcType="VARCHAR" property="playurl" />
+    </resultMap>
+
+    <select id="getSongsByName" resultMap="BaseResultMap">
+     select * from songs where  `songname` = #{songname}
+    </select>
+
+    <insert id="insertSong" parameterType="com.qgq.jaymusic.entity.Song">
+        insert into songs (`songid`,`songname`,`singer`,`coverurl`,`playurl`)
+        values(#{songid},#{songname},#{singer},#{coverurl},#{playurl})
+    </insert>
+
+</mapper>
